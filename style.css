@@ -6,3 +6,38 @@
     padding: 0;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.board {
+    display: grid;
+    grid-template-rows: repeat(3, 200px);
+    grid-template-columns: repeat(3, 200px);
+    border: -6px solid white;
+}    
+
+.board-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #000; /* Внутренняя граница */
+    outline: 4px solid transparent;
+    box-sizing: border-box;
+}
+
+
+.win-color {
+    background-color: blue;
+}
