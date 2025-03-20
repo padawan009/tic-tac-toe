@@ -1,8 +1,10 @@
 let gameBoard = document.querySelector('.board');
 let blockCell = document.querySelectorAll('.board-cell');
 const restartBtn = document.querySelector('.restart-btn')
+const winnerDisplay = document.querySelector('.winner-text')
 let marker = 'cross';
-let winner ='';
+let winner = '';
+let counter = 0;
 
 console.log(blockCell);
 
@@ -17,9 +19,11 @@ blockCell.forEach((cell) => {
         if (winner || cell.classList.contains('circle') || cell.classList.contains('cross')) return;
 
         cell.classList.add(marker);
-        cell.textContent = marker === 'cross' ? 'X' : 'O';
+        cell.textContent = marker === 'cross' ? 'x' : 'o';
         if (checkWinner(marker)) return;
+        counter++;
         changeMarker();
+        noWinners();
         console.log()
     })
 })
@@ -58,6 +62,7 @@ function resetBoard() {
 
     winner = ''; 
     gameBoard.style.pointerEvents = 'auto'; 
+    counter = 0;
 }
 
 const winnerCombinations = [
@@ -75,7 +80,8 @@ function checkWinner(marker) {
             blockCell[winnerCombinations[i][0]].classList.add('win-color'); 
             blockCell[winnerCombinations[i][1]].classList.add('win-color'); 
             blockCell[winnerCombinations[i][2]].classList.add('win-color');
-            winner = marker;
+            winner = marker === 'circle' ? 'Circle player win!' : 'Cross player win!';
+            // counter++;
             endGame(winner);
             console.log(winner);
             return true;
@@ -85,12 +91,19 @@ function checkWinner(marker) {
     return false;
 }
 
+function noWinners() {
+    if (!winner && counter === 9) {
+        winner = 'What a pity, there are no winners!'
+        endGame(winner);
+    }
+}
 
 function endGame(winner) {
     gameBoard.style.pointerEvents = 'none';
-    alert('game is overrrr')
+    winnerDisplay.textContent = winner;
 }
 
 restartBtn.addEventListener('click', () => {
     resetBoard();
+    winnerDisplay.textContent = '';
 })
