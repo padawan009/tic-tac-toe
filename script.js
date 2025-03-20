@@ -2,14 +2,25 @@ let gameBoard = document.querySelector('.board');
 let blockCell = document.querySelectorAll('.board-cell');
 const restartBtn = document.querySelector('.restart-btn');
 const winnerDisplay = document.querySelector('.winner-text');
-const body = document.querySelector('body');
+const main = document.querySelector('main');
+const inputValuePlayer1 = document.querySelector('#player1');
+const inputValuePlayer2 = document.querySelector('#player2');
+const submitInputBtn = document.querySelectorAll('.submit-name-btn')
 let marker = 'cross';
 let winner = '';
 let counter = 0;
 let winCounter1 = 0;
 let winCounter2 = 0;
+let player1 = '';
+let player2 = '';
 
 console.log(blockCell);
+
+submitInputBtn.forEach(button => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+    })
+})
 
 blockCell.forEach((cell) => {
     cell.addEventListener('click', () => {
@@ -111,19 +122,20 @@ function countWin(marker) {
 
 let winScore = document.createElement('p');
 winScore.classList.add('win-score');
-winScore.textContent = 'Player 1: 0 | Player 2: 0'
-body.appendChild(winScore);
+winScore.innerHTML = 'Player 1: 0 | Player 2: 0';
+main.appendChild(winScore);
 
 function displayWinCounter(win1, win2) {
     if (winCounter1 === 10 || winCounter2 === 10) {
         winner = winCounter1 === 10 ? 'Victory belongs to Player 1' : 'Victory belongs to Player 2'
         winCounter1 = 0;
         winCounter2 = 0;
-        winScore.textContent = 'Player 1: 0 | Player 2: 0';
+        winScore.innerHTML = 'Player 1: 0 | Player 2: 0';
         endGame(winner);
     }
     else {
-        winScore.textContent = `Player 1: ${win1} | Player 2: ${win2}`;
+        // winScore.textContent = `Player 1: ${win1} | Player 2: ${win2}`;
+        winScore.innerHTML = `Player 1: <span>${win1}</span> | Player 2: <span>${win2}</span>`;
     }
 
 }
