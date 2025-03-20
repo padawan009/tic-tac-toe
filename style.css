@@ -21,12 +21,14 @@ body {
     align-items: center;
     justify-content: center;
     gap: 30px;
-    background: radial-gradient(circle, rgb(168, 69, 72) 20%, rgb(89, 3, 46) 80%);
-    margin: 50px 0px;
+    background: radial-gradient(circle, rgba(168, 84, 69, 0.912) 20%, rgb(89, 3, 46));
+    background: radial-gradient(circle, rgba(28, 60, 58, 0.912) 20%, rgb(15, 26, 34) 80%);
+    margin: 30px 0px;
+    position: relative;
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 4.7rem;
     font-weight: 500;
     /* color: rgb(193, 212, 212); */
     font-family: 'Fugaz One';
@@ -36,8 +38,8 @@ h1 {
 
 .board {
     display: grid;
-    grid-template-rows: repeat(3, 200px);
-    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(3, 170px);
+    grid-template-columns: repeat(3, 170px);
     border: 5px solid #c8b2b2;
    border-radius: 10px;
    /* box-shadow: 0px 0px 10px #c8b2b2; */
@@ -59,6 +61,7 @@ h1 {
 
 .board-cell:hover {
     background-color: rgba(218, 135, 178, 0.195) ;
+    background-color: rgba(135, 188, 218, 0.195) ;
     /* filter: brightness(50%); */
 }
 
@@ -70,27 +73,29 @@ h1 {
 .cross {
     color: rgba(232, 232, 229, 0.97);
     font-weight: 600;
-    font-size: 6rem;
-    transition: all 0.9s ease-out;
+    font-size: 5rem;
+    transition: all 0.8s ease-out;
     text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.819);
 }
 
 .circle.win-color,
 .cross.win-color {
     background-color: #71a1a2;
-    animation: win-animation 1.7s ease-in-out;
+    animation: win-animation 1.7s ease-in-out 0.5s;
+    background-color: #cf965cd2;
 }
 
 @keyframes win-animation {
     0% {
-        font-size: 6rem;
+        font-size: 5rem;
     }
     50% {
-        font-size: 8rem;
-         background-color: #76fef0c6;
+        font-size: 7rem;
+         background-color: #6fe8dbc6;
+         background-color: #f5ce65c6;
     }
     100% {
-        font-size: 6rem;
+        font-size: 5rem;
     }
 }
 
@@ -107,11 +112,11 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .restart-btn {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 700;
     letter-spacing: 1px;
     width: 170px;
@@ -136,6 +141,23 @@ h1 {
 
 .winner-text {
     text-align: center;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     height: 50px;
+}
+
+.win-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 50px;
+    background-color: rgba(226, 222, 218, 0.74);
+    color: rgb(117, 113, 113);
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 20px;
+    position: absolute;
+    left: 67%;
+    top: 25%;
 }
