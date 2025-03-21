@@ -34,6 +34,7 @@ h1 {
     /* color: rgb(193, 212, 212); */
     font-family: 'Fugaz One';
     text-shadow: 0px 0px 10px #c8b2b2; 
+    text-align: center;
 }
 
 main {
@@ -67,8 +68,8 @@ main {
     gap: 10px;
     color: white;
     box-sizing: border-box;
-    /* max-height: 60px;
-    width: clamp(250px, 100%, 400px); */
+    max-height: 60px;
+    width: clamp(250px, 100%, 400px);
 }
 
 label {
@@ -246,4 +247,38 @@ span {
     color: rgb(250, 92, 64);
     font-weight: 800;
     font-size: 1.5rem;
+}
+
+@media (max-width: 1320px) {
+    main {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+    }
+    .win-score {
+        margin-top: 0px;
+    }
+    .game-info {
+        gap: 0px;
+    }
+}
+
+@media (max-width: 540px) {
+    .board {
+        grid-template-columns: repeat(3, minmax(100px, calc((100vw - 40px) / 3)));
+        grid-template-rows: repeat(3, minmax(100px, calc((100vw - 40px) / 3)));
+        
+    }
+    h1 {
+        line-height: 90px;
+        font-size: 3.8rem;
+    }
+    .winner-text {
+        height: max-content;
+        margin-bottom: 20px;
+    }
+    .inputs-block {
+        margin-top: 20px;
+    }
 }
