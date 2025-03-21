@@ -128,11 +128,11 @@ function countWin(marker) {
     if (winCounter1 < 10 && winCounter2 < 10) {
         if (marker === 'cross') {
             winCounter1++;
-            winner = `${player1} win!`;
+            winner = `${player1} wins!`;
         }
         else {
             winCounter2++;
-            winner = `${player2} win!`; 
+            winner = `${player2} wins!`; 
         } 
         displayWinCounter(winCounter1, winCounter2);
     }
